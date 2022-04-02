@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:getx_flutter/utils/NetworkType.dart';
 import 'package:http/http.dart' as http;
 
 class Fetch {
@@ -10,10 +12,10 @@ class Fetch {
           await client.get(Uri.parse("https://fakestoreapi.com/products"));
       if (res.statusCode == 200) {
         
-        return res.body;
+        return json.decode(res.body);
       }
     } catch (e) {
-      debugPrint("error Found");
+      print(e);
     }
   }
 }
